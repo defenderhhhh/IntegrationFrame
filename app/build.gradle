@@ -1,0 +1,108 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.martin.integrationframe"
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+
+greendao {
+    /*
+        数据库的版本号
+        升级数据库时，一定要保证，Model类的新增字段，不可以为八种基本类型
+        不然之前的数据会全部清空，要使用封装类： int -- Integer
+     */
+    schemaVersion 1
+    /*
+        生成DaoMaster、DaoSession、以及ModelDao的地址，建议设置
+        com.martin.studygreendao:包名
+        greendao：包下地址
+     */
+    daoPackage 'com.martin.integrationframe.greendao'
+    //进入数据库的Model类所在的地址（父类地址）
+    targetGenDir 'src/main/java'
+}
+
+// 强制版本统一
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '26.1.0'
+            }
+        }
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    // design包，RecyclerView、CardView等新特性
+    compile 'com.android.support:design:26.1.0'
+
+    //图片加载框架
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+
+    //RxJava
+    compile "io.reactivex.rxjava2:rxjava:2.1.8"
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+
+    //retrofit导入
+    compile "com.squareup.retrofit2:retrofit:2.3.0"
+    compile "com.squareup.retrofit2:converter-scalars:2.3.0"
+    compile "com.squareup.retrofit2:converter-gson:2.3.0"
+    compile "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
+
+    //配合Retrofit使用
+    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+
+    //RxJava生命周期管理
+    compile "com.trello.rxlifecycle2:rxlifecycle:2.2.1"
+    compile "com.trello.rxlifecycle2:rxlifecycle-android:2.2.1"
+    compile "com.trello.rxlifecycle2:rxlifecycle-components:2.2.1"
+
+    //Log日志管理
+    compile 'com.orhanobut:logger:2.1.1'
+
+    //常规UI使用（Dialog、popupWindow……）
+    compile 'com.qmuiteam:qmui:1.0.7'
+
+    //权限管理
+    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+
+    //图片选择
+    compile 'com.zhihu.android:matisse:0.4.3'
+
+    //butterKnife 注解
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    //GreenDao 数据库框架
+    compile 'org.greenrobot:greendao:3.2.2'
+    //GreenDao 安全升级
+    compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v2.0.2'
+
+}
