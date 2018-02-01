@@ -8,6 +8,7 @@ package com.martin.integrationframe.constant;
  */
 public interface ConstantCode {
 
-
+    int REQUEST_PHOTO_PICK = 100;
+    int REQUEST_PHOTO_TAKE = 101;
 
 }

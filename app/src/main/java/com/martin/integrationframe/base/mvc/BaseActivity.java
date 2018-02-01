@@ -13,13 +13,15 @@ import com.martin.integrationframe.util.show.ToastUtils;
 import com.orhanobut.logger.Logger;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.commonsdk.UMConfigure;
 
 public abstract class BaseActivity extends RxAppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BaseApplication.addActivity(this);
-        Logger.e( "The activity that opens is " + getClass().getSimpleName());
+        Logger.e("The activity that opens is " + getClass().getSimpleName());
     }
 
     public Context getContext() {
@@ -37,6 +39,13 @@ public abstract class BaseActivity extends RxAppCompatActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
         super.onResume();
+        MobclickAgent.onResume(getContext());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(getContext());
     }
 
     @Override

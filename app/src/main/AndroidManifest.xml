@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.martin.integrationframe">
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -10,6 +17,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--  ======================  meta-data  ========================================== -->
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5a72bae3b27b0a2b080000f8" />
+
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="wangzhan" />
+
+        <!-- ========================  activity  =========================================== -->
 
         <activity android:name=".mvp.ui.activity.MainActivity" />
 
@@ -24,16 +43,19 @@
 
         </activity>
 
+        <!-- ========================  provider  =========================================== -->
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.martin.integrationframe.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
+
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths_public" />
-        </provider>
 
+        </provider>
 
     </application>
 

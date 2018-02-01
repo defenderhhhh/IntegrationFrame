@@ -1,5 +1,6 @@
 package com.martin.integrationframe.base.mvp.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -23,6 +24,13 @@ public abstract class BaseMvpActivity<V extends BaseMvpView, P extends BaseMvpPr
      * 创建被代理对象,传入默认Presenter的工厂
      */
     private BaseMvpProxy<V, P> mProxy = new BaseMvpProxy<>(PresenterMvpFactoryImpl.<V, P>createFactory(getClass()));
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    }
+
+
+    //==========================  声明周期  ========================================================
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

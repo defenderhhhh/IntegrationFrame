@@ -5,8 +5,8 @@ import com.martin.integrationframe.mvp.model.SplashModel;
 import com.martin.integrationframe.mvp.view.SplashView;
 import com.orhanobut.logger.Logger;
 
+import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 
 /**
  * 作者：Martin on 2018/1/31 13:31
@@ -14,25 +14,30 @@ import io.reactivex.functions.Consumer;
  */
 public class SplashPresenter extends BaseMvpPresenter<SplashView> {
 
+    public void countdown() {
 
-    private Disposable subscribe;
-
-    public void countDown() {
-        subscribe = SplashModel.countDown(5)
-                .subscribe(new Consumer<Long>() {
+        SplashModel.countdown(2)
+                .subscribe(new Observer<Long>() {
                     @Override
-                    public void accept(Long aLong) throws Exception {
-                        Logger.e("这里执行了多少次 " + aLong);
-                        getView().countDown(aLong);
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Long aLong) {
+                        Logger.e("这是第" + aLong + "次发送");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        getView().countDownFinish();
                     }
                 });
     }
 
-    @Override
-    public void onDetachView() {
-        super.onDetachView();
-        if (!subscribe.isDisposed()) {
-            subscribe.dispose();
-        }
-    }
 }

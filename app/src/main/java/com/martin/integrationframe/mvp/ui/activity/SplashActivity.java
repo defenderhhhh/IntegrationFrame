@@ -7,7 +7,7 @@ import com.martin.integrationframe.base.mvp.factory.CreatePresenter;
 import com.martin.integrationframe.base.mvp.ui.BaseMvpActivity;
 import com.martin.integrationframe.mvp.presenter.SplashPresenter;
 import com.martin.integrationframe.mvp.view.SplashView;
-import com.orhanobut.logger.Logger;
+import com.umeng.analytics.MobclickAgent;
 
 /**
  * 作者：Martin on 2018/1/31 13:25
@@ -19,16 +19,15 @@ public class SplashActivity extends BaseMvpActivity<SplashView, SplashPresenter>
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getPresenter().countDown();
+        getPresenter().countdown();
     }
 
     @Override
-    public void countDown(long time) {
-        Logger.e("返回的内容  " + time);
-        if (time == 0) {
-            MainActivity.start(getContext());
-            finish();
-        }
+    public void countDownFinish() {
+        MainActivity.start(getContext());
+        finish();
     }
+
+
 
 }

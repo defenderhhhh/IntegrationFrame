@@ -6,6 +6,8 @@ import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.commonsdk.UMConfigure;
 
 /**
  * 作者：Martin on 2018/1/30 11:16
@@ -27,7 +29,23 @@ public class MyApplication extends BaseApplication {
     private void init() {
         //日志管理工具 Logger 的初始化
         initLogger();
+        //GreenDao 的初始化
         Dao.init(getInstance());
+        //友盟初始化
+        initUM();
+    }
+
+    /**
+     * 友盟初始化
+     */
+    private void initUM() {
+        UMConfigure.init(getInstance(),"5a72bae3b27b0a2b080000f8","wangzhan",UMConfigure.DEVICE_TYPE_PHONE,"");
+        MobclickAgent.setScenarioType(getInstance(), MobclickAgent.EScenarioType.E_UM_NORMAL);
+        /**
+         * 设置组件化的Log开关
+         * 参数: boolean 默认为false，如需查看LOG设置为true
+         */
+        UMConfigure.setLogEnabled(true);
     }
 
 

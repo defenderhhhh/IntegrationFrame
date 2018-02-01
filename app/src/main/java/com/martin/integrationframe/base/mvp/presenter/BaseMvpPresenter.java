@@ -1,5 +1,6 @@
 package com.martin.integrationframe.base.mvp.presenter;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -54,6 +55,15 @@ public abstract class BaseMvpPresenter<V extends BaseMvpView> {
      * @param outState
      */
     public void onSaveInstanceState(Bundle outState) {
+    }
+
+    /**
+     * 数据请求返回处理
+     * @param requestCode   请求码
+     * @param resultCode    返回码
+     * @param data  返回数据
+     */
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
     }
 
     /**

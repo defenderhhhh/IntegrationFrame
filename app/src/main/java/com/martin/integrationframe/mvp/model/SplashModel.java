@@ -16,7 +16,7 @@ public class SplashModel {
      *
      * @param count 计时秒数
      */
-    public static Observable<Long> countDown(int count) {
+    public static Observable<Long> countdown(int count) {
         return Observable.interval(1000, TimeUnit.MILLISECONDS)
                 .take(count)
                 .subscribeOn(AndroidSchedulers.mainThread());

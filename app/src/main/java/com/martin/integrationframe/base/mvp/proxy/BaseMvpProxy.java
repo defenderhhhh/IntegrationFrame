@@ -1,5 +1,6 @@
 package com.martin.integrationframe.base.mvp.proxy;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.martin.integrationframe.base.mvp.factory.PresenterMvpFactory;
@@ -129,5 +130,15 @@ public class BaseMvpProxy<V extends BaseMvpView, P extends BaseMvpPresenter<V>> 
      */
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         mBundle = savedInstanceState;
+    }
+
+    /**
+     * 数据请求返回处理
+     * @param requestCode   请求码
+     * @param resultCode    返回码
+     * @param data  返回数据
+     */
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mPresenter.onActivityResult(requestCode, resultCode, data);
     }
 }
