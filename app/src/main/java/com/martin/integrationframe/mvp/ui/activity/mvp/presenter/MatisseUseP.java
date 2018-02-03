@@ -66,7 +66,7 @@ public class MatisseUseP extends BaseMvpPresenter<MatisseUseV> {
         for (int i = 0; i < data.size(); i++) {
             list.add(new ShowImageModel(data.get(i)));
         }
-        ShowImageActivity.start(adapter.getContext(), list);
+        ShowImageActivity.start(adapter.getContext(), list, position);
     }
 
 

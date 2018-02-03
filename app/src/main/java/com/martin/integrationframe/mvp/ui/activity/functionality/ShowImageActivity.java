@@ -38,6 +38,7 @@ public class ShowImageActivity extends BaseMvpActivity<ShowImageV, ShowImageP> i
     ViewPager vpContent;
     @BindView(R.id.img_close)
     ImageView imgClose;
+    private int positionShow;
 
     // ==============  启动方式 ================================================
 
@@ -58,8 +59,13 @@ public class ShowImageActivity extends BaseMvpActivity<ShowImageV, ShowImageP> i
     }
 
     public static void start(Context context, ArrayList<ShowImageModel> list) {
+        start(context, list, 0);
+    }
+
+    public static void start(Context context, ArrayList<ShowImageModel> list, int positionShow) {
         Intent starter = new Intent(context, ShowImageActivity.class);
         starter.putParcelableArrayListExtra(ConstantExtra.REQUEST_DATA_LIST, list);
+        starter.putExtra(ConstantExtra.REQUEST_DATA_SINGLE, positionShow);
         context.startActivity(starter);
     }
 
@@ -77,6 +83,7 @@ public class ShowImageActivity extends BaseMvpActivity<ShowImageV, ShowImageP> i
     }
 
     private void init() {
+        positionShow = getIntent().getIntExtra(ConstantExtra.REQUEST_DATA_SINGLE, 0);
         ArrayList<ShowImageModel> list = getIntent().getParcelableArrayListExtra(ConstantExtra.REQUEST_DATA_LIST);
         getPresenter().initPageAdapter(getSupportFragmentManager(), list);
     }
@@ -84,6 +91,9 @@ public class ShowImageActivity extends BaseMvpActivity<ShowImageV, ShowImageP> i
     @Override
     public void showImages(ViewPagerFragmentAdapter adapter) {
         vpContent.setAdapter(adapter);
+        if (adapter.getCount() > positionShow) {
+            vpContent.setCurrentItem(positionShow, false);
+        }
     }
 
     @OnClick({R.id.img_close})
