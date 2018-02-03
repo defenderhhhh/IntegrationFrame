@@ -5,16 +5,17 @@ import android.support.annotation.Nullable;
 
 import com.martin.integrationframe.base.mvp.factory.CreatePresenter;
 import com.martin.integrationframe.base.mvp.ui.BaseMvpActivity;
-import com.martin.integrationframe.mvp.presenter.SplashPresenter;
-import com.martin.integrationframe.mvp.view.SplashView;
-import com.umeng.analytics.MobclickAgent;
+import com.martin.integrationframe.mvp.ui.activity.mvp.presenter.SplashP;
+import com.martin.integrationframe.mvp.ui.activity.mvp.view.SplashV;
 
 /**
  * 作者：Martin on 2018/1/31 13:25
  * 邮箱：martin0207mfh@163.com
+ *
+ * @description 解决闪屏问题
  */
-@CreatePresenter(SplashPresenter.class)
-public class SplashActivity extends BaseMvpActivity<SplashView, SplashPresenter> implements SplashView {
+@CreatePresenter(SplashP.class)
+public class SplashActivity extends BaseMvpActivity<SplashV, SplashP> implements SplashV {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,7 +28,5 @@ public class SplashActivity extends BaseMvpActivity<SplashView, SplashPresenter>
         MainActivity.start(getContext());
         finish();
     }
-
-
 
 }

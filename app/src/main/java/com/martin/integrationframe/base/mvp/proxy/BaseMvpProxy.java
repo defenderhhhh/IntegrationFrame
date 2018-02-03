@@ -73,17 +73,29 @@ public class BaseMvpProxy<V extends BaseMvpView, P extends BaseMvpPresenter<V>> 
     }
 
     /**
+     * 在 onCreate() 里面做绑定，避免出现空指针问题
      * 绑定Presenter和view
-     *
-     * @param mvpView
      */
-    public void onResume(V mvpView) {
+    public void onCreate(V mvpView){
         getPresenter();
         if (mPresenter != null && !mIsAttchView) {
             mPresenter.onAttachView(mvpView);
             mIsAttchView = true;
         }
     }
+
+//    /**
+//     * 绑定Presenter和view
+//     *
+//     * @param mvpView
+//     */
+//    public void onResume(V mvpView) {
+//        getPresenter();
+//        if (mPresenter != null && !mIsAttchView) {
+//            mPresenter.onAttachView(mvpView);
+//            mIsAttchView = true;
+//        }
+//    }
 
     /**
      * 销毁Presenter持有的View

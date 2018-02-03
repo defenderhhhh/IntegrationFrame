@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/qmui_config_color_blue"
+    android:layout_height="match_parent"
+    tools:context="com.martin.integrationframe.mvp.ui.activity.TestActivity">
+
+</LinearLayout>

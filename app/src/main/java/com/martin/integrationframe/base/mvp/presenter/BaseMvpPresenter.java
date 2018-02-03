@@ -1,10 +1,13 @@
 package com.martin.integrationframe.base.mvp.presenter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.martin.integrationframe.base.mvp.ui.BaseMvpView;
+import com.qmuiteam.qmui.widget.QMUITopBar;
 
 
 /**
@@ -72,4 +75,11 @@ public abstract class BaseMvpPresenter<V extends BaseMvpView> {
     public V getView() {
         return mvpView;
     }
+
+    // =======================  自定义常用的方法  ====================================================
+
+    protected void initTopBar(QMUITopBar topBar, Activity activity){
+
+    }
+
 }

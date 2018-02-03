@@ -9,4 +9,16 @@
     <dimen name="item_margin_horizontal">24dp</dimen>
     <dimen name="item_margin_vertical">8dp</dimen>
 
+    <dimen name="dis_0.5">4dp</dimen>
+    <dimen name="dis_1">8dp</dimen>
+    <dimen name="dis_1.5">12dp</dimen>
+    <dimen name="dis_2">16dp</dimen>
+    <dimen name="dis_3">24dp</dimen>
+    <dimen name="dis_4">32dp</dimen>
+    <dimen name="dis_5">40dp</dimen>
+    <dimen name="dis_6">48dp</dimen>
+    <dimen name="dis_7">56dp</dimen>
+    <dimen name="dis_8">64dp</dimen>
+    <dimen name="dis_9">72dp</dimen>
+
 </resources>

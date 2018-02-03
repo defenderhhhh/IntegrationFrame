@@ -57,7 +57,7 @@ public class ImageLoader {
     // 加载本地图片
     public void loadLocalImage(Context context, String path, ImageView imageView) {
         Glide.with(context)
-                .load(path)
+                .load("file://" +path)
                 .into(imageView);
     }
 

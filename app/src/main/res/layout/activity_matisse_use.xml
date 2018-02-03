@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_color_blue"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.martin.integrationframe.mvp.ui.activity.MatisseUseActivity">
+
+    <com.qmuiteam.qmui.widget.QMUITopBar
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/qmui_topbar_height" />
+
+    <Button
+        android:id="@+id/btn_pick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择照片" />
+
+    <Button
+        android:id="@+id/btn_pick_or_take"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择或拍照" />
+
+    <Button
+        android:id="@+id/btn_take"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="拍摄照片" />
+
+    <GridView
+        android:id="@+id/gv_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mintcream"
+        android:numColumns="3" />
+
+</LinearLayout>

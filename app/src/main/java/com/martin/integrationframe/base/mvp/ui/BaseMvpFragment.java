@@ -15,7 +15,7 @@ import com.martin.integrationframe.base.mvp.proxy.PresenterProxyInterface;
  * 作者：Martin on 2018/1/2 13:43
  * 邮箱：martin0207mfh@163.com
  */
-public class BaseMvpFragment<V extends BaseMvpView, P extends BaseMvpPresenter<V>>
+public abstract class BaseMvpFragment<V extends BaseMvpView, P extends BaseMvpPresenter<V>>
         extends BaseFragment implements PresenterProxyInterface<V, P> {
 
     /**
@@ -33,12 +33,13 @@ public class BaseMvpFragment<V extends BaseMvpView, P extends BaseMvpPresenter<V
         if (savedInstanceState != null) {
             mProxy.onRestoreInstanceState(savedInstanceState);
         }
+        mProxy.onCreate((V) this);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mProxy.onResume((V) this);
+//        mProxy.onResume((V) this);
     }
 
     @Override

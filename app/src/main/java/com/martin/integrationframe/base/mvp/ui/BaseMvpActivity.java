@@ -27,6 +27,7 @@ public abstract class BaseMvpActivity<V extends BaseMvpView, P extends BaseMvpPr
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mProxy.onActivityResult(requestCode, resultCode, data);
     }
 
 
@@ -38,12 +39,13 @@ public abstract class BaseMvpActivity<V extends BaseMvpView, P extends BaseMvpPr
         if (savedInstanceState != null) {
             mProxy.onRestoreInstanceState(savedInstanceState.getBundle(PRESENTER_SAVE_KEY));
         }
+        mProxy.onCreate((V) this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        mProxy.onResume((V) this);
+//        mProxy.onResume((V) this);
     }
 
     @Override

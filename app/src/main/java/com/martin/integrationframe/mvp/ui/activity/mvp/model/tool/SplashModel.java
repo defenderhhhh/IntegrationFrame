@@ -1,4 +1,4 @@
-package com.martin.integrationframe.mvp.model;
+package com.martin.integrationframe.mvp.ui.activity.mvp.model.tool;
 
 import java.util.concurrent.TimeUnit;
 

@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
+public abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
 
-    public List<T> data;
-    public LayoutInflater inflater;
-    public Context context;
+    private List<T> data;
+    private LayoutInflater inflater;
+    private Context context;
 
     public BaseAdapter(List<T> data, Context context) {
         if (data == null) {
@@ -44,6 +44,16 @@ abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
         }
     }
 
+    /**
+     * 添加数据
+     */
+    public void addRes(T item) {
+        if (item != null) {
+            data.add(item);
+            notifyDataSetChanged();
+        }
+    }
+
     protected String noNull(String str) {
         return str == null ? "" : str;
     }
@@ -66,4 +76,15 @@ abstract class BaseAdapter<T> extends android.widget.BaseAdapter {
     @Override
     public abstract View getView(int position, View convertView, ViewGroup parent);
 
+    public List<T> getData() {
+        return data;
+    }
+
+    public LayoutInflater getInflater() {
+        return inflater;
+    }
+
+    public Context getContext() {
+        return context;
+    }
 }
